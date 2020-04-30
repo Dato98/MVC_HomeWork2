@@ -1,0 +1,48 @@
+﻿@model MovieVM
+@{
+    ViewData["Title"] = "Movie";
+    Layout = "_ManageLayout";
+}
+
+
+<div class="container mt-4">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">სათაური</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Movies)
+            {
+                <tr>
+                    <td scope="row">@item.Id</td>
+                    <td scope="row">@item.Title</td>
+                    <td scope="row">
+                        <a class="btn btn-link"asp-action="EditMovie" asp-controller="Manage" asp-route-id="@item.Id">ჩასწორება</a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <!--
+        <div class="modal fade" id="EditMovieModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <partial name="~/Views/Manage/EditMovie.cshtml" model="Model.Movie"/>
+        </div>
+    -->
+
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+        დამატება
+    </button>
+
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <partial name="~/Views/Manage/CreateMovie.cshtml" model="Model.Movie" />
+    </div>
+
+
+</div>
