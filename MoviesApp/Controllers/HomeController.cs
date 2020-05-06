@@ -27,7 +27,7 @@ namespace MoviesApp.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult Search(string title)
         {
             if (title == null || title.Trim().Length == 0)

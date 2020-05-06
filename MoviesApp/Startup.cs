@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MoviesApp.Models;
 using static MoviesApp.Models.MovieRepository;
 
 namespace MoviesApp
@@ -26,6 +27,9 @@ namespace MoviesApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IMovieRepository, MoviRepository>();
+            services.AddSingleton<IAddRepository, AddRepository>();
+            services.AddSingleton<ISliderRepository,SliderRepository>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

@@ -18,11 +18,11 @@
             @foreach (var item in Model.Movies)
             {
                 <tr>
-                    <td scope="row">@item.Id</td>
-                    <td scope="row">@item.Title</td>
-                    <td scope="row">
-                        <a class="btn btn-link"asp-action="EditMovie" asp-controller="Manage" asp-route-id="@item.Id">ჩასწორება</a>
-                    </td>
+                    <th scope="row">@item.Id</th>
+                    <th scope="row">@item.Title</th>
+                    <th scope="row">
+                        <a class="btn btn-outline-info editBtn" asp-action="EditMovie" asp-controller="Manage" asp-route-id="@item.Id">ჩასწორება</a>
+                    </th>
 
                 </tr>
             }
@@ -36,7 +36,7 @@
         </div>
     -->
 
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+    <button type="button" class="btn btn-success" id="addBtn" data-toggle="modal" data-target="#exampleModalLong">
         დამატება
     </button>
 
@@ -46,3 +46,24 @@
 
 
 </div>
+
+
+@section Scripts{
+
+    <script>
+
+
+
+
+        $(".editBtn").on("click", function (e) {
+            e.preventDefault();
+            var url = $(this).attr("href");
+
+            $.get(url, function (response) {
+                $("#exampleModalLong").html(response);
+            });
+            $('#exampleModalLong').modal('show');
+        });
+
+    </script>
+}

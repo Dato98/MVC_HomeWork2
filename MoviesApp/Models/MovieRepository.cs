@@ -12,6 +12,7 @@ namespace MoviesApp.Models
             IEnumerable<Movie> Movies { get;}
 
             void Create(Movie movie);
+            void Edit(Movie movie);
         }
 
 
@@ -30,6 +31,16 @@ namespace MoviesApp.Models
                 var mv = Data.OrderBy(x => x.Id).LastOrDefault();
                 movie.Id = mv != null ? mv.Id + 1 : 1;
                 Data.Add(movie);
+            }
+
+            public void Edit(Movie movie)
+            {
+                var mov = Data.Where(x => x.Id == movie.Id).FirstOrDefault();
+                if (mov != null)
+                {
+                    mov.Title = movie.Title;
+                    mov.Thumb = movie.Thumb;
+                }
             }
         }
     }

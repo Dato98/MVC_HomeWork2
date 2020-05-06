@@ -67,3 +67,17 @@ body {
 .carousel-inner{
     height:500px;
 }
+
+.slider{
+    background:#000000;
+}
+
+.container-fluid {
+    background: #3d9970;
+    padding:25px;
+    color:#fff;
+}
+
+.footer-copyright{
+    background:#26885c;
+}

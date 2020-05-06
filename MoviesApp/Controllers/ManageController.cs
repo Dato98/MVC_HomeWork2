@@ -29,28 +29,25 @@ namespace MoviesApp.Controllers
         [HttpPost]
         public IActionResult CreateMovie(Movie movie)
         {
-            _movieRepository.Create(movie);
+            if (movie.Id != 0)
+            {
+                _movieRepository.Edit(movie);
+            }
+            else
+            {
+                _movieRepository.Create(movie);
+            }
+            
             return RedirectToAction("Movie");
         }
 
         public IActionResult EditMovie(int Id)
         {
             Movie model = _movieRepository.Movies.Where(x => x.Id == Id).FirstOrDefault();
-            return View(model);
+            return PartialView("~/Views/Manage/CreateMovie.cshtml", model);
         }
 
-        [HttpPost]
-        public IActionResult Edit(Movie movie)
-        {
-            var mov = _movieRepository.Movies.Where(x => x.Id == movie.Id).FirstOrDefault();
-            if(mov != null)
-            {
-                mov.Title = movie.Title;
-                mov.Thumb = movie.Thumb;
-            }
-
-            return RedirectToAction("Movie");
-        }
+       
 
     }
 }
