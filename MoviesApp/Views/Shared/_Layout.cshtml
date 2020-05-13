@@ -37,6 +37,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">ფილმები</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Movie" asp-controller="Manage">მართვა</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Registration" asp-controller="Auth">რეგისტრაცია</a>
+                        </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0" method="get" asp-action="Search" asp-controller="Home">
                         <input class="form-control mr-sm-2" type="search" placeholder="ძებნა" aria-label="ძებნა" name="title">
@@ -53,9 +59,9 @@
 
     <!-- Footer -->
     <footer class="page-footer font-small teal pt-4">
-        
 
-            <!-- Footer Text -->
+
+        <!-- Footer Text -->
         <div class="container-fluid text-center text-md-left">
 
             <div class="container">
@@ -96,37 +102,26 @@
                 <!-- Grid row -->
             </div>
         </div>
-            <!-- Footer Text -->
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">
-                © 2020 Copyright:
-                <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-            </div>
-            <!-- Copyright -->
+        <!-- Footer Text -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2020 Copyright:
+            <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
 
 
-        
+
     </footer>
     <!-- Footer -->
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
-    </environment>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)

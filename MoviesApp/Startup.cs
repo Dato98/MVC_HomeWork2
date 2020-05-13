@@ -29,6 +29,7 @@ namespace MoviesApp
             services.AddSingleton<IMovieRepository, MoviRepository>();
             services.AddSingleton<IAddRepository, AddRepository>();
             services.AddSingleton<ISliderRepository,SliderRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -63,7 +64,7 @@ namespace MoviesApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Manage}/{action=EditMovie}/{id}");
+                    template: "{controller=Manage}/{action=EditMovie}/{Id}");
 
                 routes.MapRoute(
                     name: "default",

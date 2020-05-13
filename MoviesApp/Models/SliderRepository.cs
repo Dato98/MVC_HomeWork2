@@ -15,6 +15,7 @@ namespace MoviesApp.Models
         private List<SliderItem> Data = new List<SliderItem>()
         {
             new SliderItem(){Id = 1,Src = "https://images7.alphacoders.com/434/thumb-1920-434813.jpg"},
+            new SliderItem(){Id = 2,Src = "https://wallpaperaccess.com/full/1103973.jpg"},
             new SliderItem(){Id = 2,Src = "https://wallpaperaccess.com/full/1103973.jpg"}
         };
 

@@ -13,6 +13,7 @@ namespace MoviesApp.Models
 
             void Create(Movie movie);
             void Edit(Movie movie);
+            Movie GetMovieById(int id);
         }
 
 
@@ -41,6 +42,11 @@ namespace MoviesApp.Models
                     mov.Title = movie.Title;
                     mov.Thumb = movie.Thumb;
                 }
+            }
+
+            public Movie GetMovieById(int id)
+            {
+                return Data.Find(x => x.Id == id);
             }
         }
     }

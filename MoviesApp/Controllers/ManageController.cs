@@ -11,6 +11,7 @@ namespace MoviesApp.Controllers
     public class ManageController : Controller
     {
         private readonly IMovieRepository _movieRepository;
+        private const string MovieFormPartialView = "~/Views/Manage/CreateMovie.cshtml";
 
         public ManageController(IMovieRepository movieRepository)
         {
@@ -26,6 +27,11 @@ namespace MoviesApp.Controllers
             return View(model);
         }
 
+        public IActionResult CreateMovie()
+        {
+            return PartialView(MovieFormPartialView, new Movie());
+        }
+
         [HttpPost]
         public IActionResult CreateMovie(Movie movie)
         {
@@ -37,17 +43,35 @@ namespace MoviesApp.Controllers
             {
                 _movieRepository.Create(movie);
             }
+
             
-            return RedirectToAction("Movie");
+            return PartialView("~/Views/Manage/TableRows.cshtml",GetMovieModel());
         }
 
         public IActionResult EditMovie(int Id)
         {
-            Movie model = _movieRepository.Movies.Where(x => x.Id == Id).FirstOrDefault();
-            return PartialView("~/Views/Manage/CreateMovie.cshtml", model);
+            // Movie model = _movieRepository.Movies.Where(x => x.Id == Id).FirstOrDefault();
+             Movie movie = new Movie();
+             if (Id > 0)
+             {
+                 movie = _movieRepository.GetMovieById(Id);
+             }
+            return PartialView(MovieFormPartialView, movie);
         }
 
-       
+        [HttpPost]
+        public IActionResult EditMovie(Movie movie)
+        {
+            _movieRepository.Edit(movie);
+            return PartialView("~/Views/Manage/TableRows.cshtml", GetMovieModel());
+        }
 
+
+        private MovieVM GetMovieModel()
+        {
+            MovieVM model = new MovieVM();
+            model.Movies = _movieRepository.Movies;
+            return model;
+        }
     }
 }
